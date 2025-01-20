@@ -53,18 +53,34 @@ def report():
 
         return report_dict
      
-print("--- Begin report of books/frankenstein.txt ---")
-print(f"{word_count()} words were found in the document")
-print("")
 list = []
+new_list = []
+order = []
 
 for x in report():
     list.append(x)
+    new_list.append(report()[x])
+    
 
+new_list.sort(reverse=True)
+
+
+for y in range(0, len(list)):
+    for x in list:
+        if report()[x] == new_list[y]:
+
+            order.append(x)
+    
+
+print("--- Begin report of books/frankenstein.txt ---")
+print(f"{word_count()} words were found in the document")
+print("")
 for x in range(0, len(list)):
-    print(f"The '{list[x]}' character was found {report()[list[x]]} times")
-
+    print(f"The '{order[x]}' character was found {new_list[x]} times")
 print("--- End report ---")
+
+
+
 
 
     
